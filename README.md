@@ -1,0 +1,1 @@
+Junit과 Refactoring을 공부하기 위한 테스트 코드

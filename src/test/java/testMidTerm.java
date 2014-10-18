@@ -10,7 +10,6 @@ public class testMidTerm {
     @Test
     public void testMain(){
         assertThat(1 + 2, is(3));
+        assertThat("강상훈",is("강상훈"));
     }
-
-
 }
