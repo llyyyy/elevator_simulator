@@ -9,6 +9,9 @@ import java.util.List;
 /**
  * Created by ksh on 2014-05-24.
  */
+/*
+타이머를 통해서 일정 시간 마다 건물을 그리는 클래스
+ */
 class Buliding extends Panel{
     private BuildingPanel buildingPanel;
     private ElevatorBtnPanel elevatorBtnPanel;

@@ -5,6 +5,9 @@ import java.util.*;
 /**
  * Created by ksh on 2014-05-24.
  */
+/*
+엘레베이터의 상태를 저장하는 클래스
+ */
 public class Elevator {
     private static Elevator instance = null;
     public final int SPEED = 4;

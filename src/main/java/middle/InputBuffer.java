@@ -5,6 +5,9 @@ import java.util.*;
 /**
  * Created by ksh on 2014-05-24.
  */
+/*
+사용자가 누른 층을 순서대로 저장하는 클래스
+ */
 public class InputBuffer {
     private static InputBuffer instance = null;
     Map<Integer, String> floorSelectionsState;

@@ -8,6 +8,9 @@ import java.util.*;
 /**
  * Created by ksh on 2014-05-24.
  */
+/*
+엘레베이터가 도착할 목표 위치를 계산하는 클래스
+ */
 public class Process {
     private InputBuffer inputBuffer;
     private Elevator elevator;
