@@ -90,25 +90,17 @@ public class Elevator {
                     //가까운 ?????
                    // currentMoveState = MoveState.UP;
                 }
-                if (selectDownFloor()) {
-                    currentMoveState = MoveState.UP;
-                } else if (selectUpFloor()) {
-                    currentMoveState = MoveState.DOWN;
-                } else if (selectHereFloor()){
+                if (selectDownFloor()) { currentMoveState = MoveState.UP; }
+                if (selectUpFloor()) { currentMoveState = MoveState.DOWN; }
+                if (selectHereFloor()){
                     if (currentServiceState != ServiceState.PAUSE) {
                         currentServiceState = ServiceState.PAUSE;
                         //currentMoveState = MoveState.NO_MOVE;
 
                         targetFloors.remove(0);
                         try {
-                            int interval = 300;
-                            currentDoorState = DoorState.OPENING;
-                            Thread.sleep(interval);
-                            currentDoorState = DoorState.OPEN;
-                            Thread.sleep(interval);
-                            currentDoorState = DoorState.CLOSEING;
-                            Thread.sleep(interval);
-                            currentDoorState = DoorState.CLOSE;
+                            openTheDoor();
+                            closeTheDoor();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -118,11 +110,31 @@ public class Elevator {
                         currentMoveState = MoveState.NO_MOVE;
                     }
                 }
-            } else {
-                currentMoveState = MoveState.NO_MOVE;
-                currentServiceState = ServiceState.PAUSE;
-                currentDoorState = DoorState.CLOSE;
             }
+            else {
+                stopElevator();
+            }
+        }
+
+        private void stopElevator() {
+            currentMoveState = MoveState.NO_MOVE;
+            currentServiceState = ServiceState.PAUSE;
+            currentDoorState = DoorState.CLOSE;
+        }
+
+        private void closeTheDoor() throws InterruptedException {
+            int interval = 300;
+            currentDoorState = DoorState.CLOSEING;
+            Thread.sleep(interval);
+            currentDoorState = DoorState.CLOSE;
+        }
+
+        private void openTheDoor() throws InterruptedException {
+            int interval = 300;
+            currentDoorState = DoorState.OPENING;
+            Thread.sleep(interval);
+            currentDoorState = DoorState.OPEN;
+            Thread.sleep(interval);
         }
 
         private boolean selectHereFloor() {
