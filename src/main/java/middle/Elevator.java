@@ -90,11 +90,11 @@ public class Elevator {
                     //가까운 ?????
                    // currentMoveState = MoveState.UP;
                 }
-                if (targetFloors.get(0) > currentFloor) {
+                if (selectDownFloor()) {
                     currentMoveState = MoveState.UP;
-                } else if (targetFloors.get(0) < currentFloor) {
+                } else if (selectUpFloor()) {
                     currentMoveState = MoveState.DOWN;
-                } else if (targetFloors.get(0) == currentFloor){
+                } else if (selectHereFloor()){
                     if (currentServiceState != ServiceState.PAUSE) {
                         currentServiceState = ServiceState.PAUSE;
                         //currentMoveState = MoveState.NO_MOVE;
@@ -123,6 +123,18 @@ public class Elevator {
                 currentServiceState = ServiceState.PAUSE;
                 currentDoorState = DoorState.CLOSE;
             }
+        }
+
+        private boolean selectHereFloor() {
+            return targetFloors.get(0) == currentFloor;
+        }
+
+        private boolean selectUpFloor() {
+            return targetFloors.get(0) < currentFloor;
+        }
+
+        private boolean selectDownFloor() {
+            return targetFloors.get(0) > currentFloor;
         }
 
         @Override
